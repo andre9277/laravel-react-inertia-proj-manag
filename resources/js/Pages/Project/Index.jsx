@@ -1,5 +1,9 @@
 import Pagination from "@/Components/Pagination";
 import Authenticated from "@/Layouts/AuthenticatedLayout";
+import {
+  PROJECT_STATUS_CLASS_MAP,
+  PROJECT_STATUS_TEXT_MAP,
+} from "@/constants.jsx";
 import { Head, Link } from "@inertiajs/react";
 
 export default function Index({ auth, projects }) {
@@ -44,7 +48,16 @@ export default function Index({ auth, projects }) {
                       <th className="px-3 py-2 text-gray-100 text-nowrap hover:underline">
                         {project.name}
                       </th>
-                      <td className="px-3 py-2">{project.status}</td>
+                      <td className="px-3 py-2">
+                        <span
+                          className={
+                            "px-2 py-1 rounded text-white " +
+                            PROJECT_STATUS_CLASS_MAP[project.status]
+                          }
+                        >
+                          {PROJECT_STATUS_TEXT_MAP[project.status]}
+                        </span>
+                      </td>
                       <td className="px-3 py-2 text-nowrap">
                         {project.created_at}
                       </td>
