@@ -22,8 +22,8 @@ class ProjectResource extends JsonResource
             'created_at' => (new Carbon($this->created_at))->format('Y-m-d'),
             'status' => $this->status,
             'image_path' => $this->image_path,
-            'createdBy' => $this->createdBy,
-            'updatedBy' => $this->updatedBy,
-        ]
+            'createdBy' => $this->createdBy, //returns the User object
+            'updatedBy' => $this->updatedBy, //returns the User object
+        ];
     }
 }
