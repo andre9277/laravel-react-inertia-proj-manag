@@ -16,6 +16,10 @@ class ProjectController extends Controller
     {
         $query = Project::query();
 
+        //New query params for sorting:
+            $sortField = request("sort_field", 'created_at');
+            $sortDirection = request("sort_direction", "desc");
+
         if(request("name")){
             $query->where("name","like","%".request("name")."%");
         }
@@ -24,13 +28,14 @@ class ProjectController extends Controller
             $query->where('status', request('status'));
         }
 
-        $projects= $query->paginate(10)->onEachSide(1);
+        $projects= $query->orderBy($sortField,$sortDirection)->paginate(10)->onEachSide(1);
 
 
         //The entire data will be available to the frontend (dont send sensible data)
         return inertia("Project/Index", [
             "projects"=> ProjectResource::collection($projects),
             'queryParams' => request()->query() ?: null, //if its an empty array, im going to pass null
+            //queryParams are passed to the view
         ]);
     }
 
