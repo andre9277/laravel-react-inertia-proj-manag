@@ -6,7 +6,7 @@ import {
   PROJECT_STATUS_CLASS_MAP,
   PROJECT_STATUS_TEXT_MAP,
 } from "@/constants.jsx";
-import { Head, Link } from "@inertiajs/react";
+import { Head, Link, router } from "@inertiajs/react";
 
 export default function Index({ auth, projects, queryParams = null }) {
   //My queryParams is going to be an object
