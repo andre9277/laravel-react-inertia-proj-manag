@@ -8,6 +8,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProjectResource extends JsonResource
 {
+    //disable wrap
+    public static $wrap = false;
     /**
      * Transform the resource into an array.
      *
