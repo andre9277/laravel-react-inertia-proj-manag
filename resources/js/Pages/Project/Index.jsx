@@ -47,6 +47,14 @@ export default function Index({ auth, projects, queryParams = null, success }) {
     router.get(route("project.index"), queryParams);
   };
 
+  //Function that deletes a project
+  const deleteProject = (project) => {
+    if (!window.confirm("Are you sure you want to delete the project?")) {
+      return;
+    }
+    router.delete(route("project.destroy", project.id));
+  };
+
   return (
     <Authenticated
       user={auth.user}
